@@ -1,77 +1,76 @@
 //
-//  proximityUUIDTextFieldFormatter.m
+//  proximityUUIDFormatter.m
 //  estimoteTraining
 //
 //  Created by Jonathon Hibbard on 5/23/14.
 //  Copyright (c) 2014 DataOCD. All rights reserved.
 //
 
-#import "proximityUUIDTextFieldFormatter.h"
+#import "proximityUUIDFormatter.h"
 
-@interface proximityUUIDTextFieldFormatter()
-    @property (nonatomic, copy) NSString *previousTextFieldContent;
+@interface proximityUUIDFormatter ()
+    @property (nonatomic, copy) NSString *previousValue;
     @property (nonatomic, copy) UITextRange *previousSelection;
 
 @end
 
-@implementation proximityUUIDTextFieldFormatter
+@implementation proximityUUIDFormatter
 
 
 -(void)stashValuesInTextField:(UITextField *)textField {
-    self.previousTextFieldContent = textField.text;
+    self.previousValue = textField.text;
     self.previousSelection = textField.selectedTextRange;
 }
 
 -(void)resetValueInTextField:(UITextField *)textField {
-    textField.text = [self.previousTextFieldContent copy];
+    textField.text = [self.previousValue copy];
     textField.selectedTextRange = [self.previousSelection copy];
 
-    self.previousTextFieldContent = nil;
+    self.previousValue = nil;
     self.previousSelection = nil;
 }
 
 +(instancetype)sharedInstance {
 
-    static proximityUUIDTextFieldFormatter *_sharedInstance = nil;
+    static proximityUUIDFormatter *_sharedInstance = nil;
     static dispatch_once_t onceToken;
 
     dispatch_once(&onceToken, ^{
-        _sharedInstance = [proximityUUIDTextFieldFormatter new];
+        _sharedInstance = [proximityUUIDFormatter new];
     });
 
     return _sharedInstance;
 }
 
 +(BOOL)isValidProximityUUID:(NSString *)proximityUUID {
-    return (bool) [[NSUUID alloc] initWithUUIDString:proximityUUID];
+    return (bool)[[NSUUID alloc] initWithUUIDString:proximityUUID];
 }
 
 +(void)storeValuesInTextField:(UITextField *)textField {
-    [[proximityUUIDTextFieldFormatter sharedInstance] stashValuesInTextField:textField];
+    [[proximityUUIDFormatter sharedInstance] stashValuesInTextField:textField];
 }
 
 +(void)formatTextField:(UITextField *)textField {
 
     NSUInteger targetCursorPosition = (NSUInteger)[textField offsetFromPosition:textField.beginningOfDocument toPosition:textField.selectedTextRange.start];
 
-    NSString *proximityUUIDWithoutHyphens = [[self class] removeHyphensFromText:textField.text withCursorPosition:&targetCursorPosition];
-
-    if( [proximityUUIDWithoutHyphens length] > 32 ) {
-        [[proximityUUIDTextFieldFormatter sharedInstance] resetValueInTextField:textField];
+    NSString *nekkedProximityUUID = [[self class] stripHyphensFromString:textField.text atCursorPosition:&targetCursorPosition];
+    if( [nekkedProximityUUID length] > 32 ) {
+        [[proximityUUIDFormatter sharedInstance] resetValueInTextField:textField];
         return;
     }
 
-    NSString *proximityUUIDWithHyphens = [[self class] insertHyphensForProximityUUID:proximityUUIDWithoutHyphens withCursorPosition:&targetCursorPosition];
-    textField.text = proximityUUIDWithHyphens;
+    NSString *proximityUUID = [[self class] hyphenateString:nekkedProximityUUID atCursorPosition:&targetCursorPosition];
+    textField.text = proximityUUID;
 
     UITextPosition *targetPosition = [textField positionFromPosition:[textField beginningOfDocument] offset:targetCursorPosition];
     [textField setSelectedTextRange: [textField textRangeFromPosition:targetPosition toPosition:targetPosition]];
 }
 
-+(NSString *)removeHyphensFromText:(NSString *)string withCursorPosition:(NSUInteger *)cursorPosition {
++(NSString *)stripHyphensFromString:(NSString *)string atCursorPosition:(NSUInteger *)cursorPosition {
 
     NSUInteger originalCursorPosition = *cursorPosition;
-    NSMutableString *alphaNumOnlyStr = [NSMutableString new];
+    NSMutableString *poleDancer = [NSMutableString new];
 
     NSUInteger strLen = [string length];
     NSUInteger i;
@@ -82,19 +81,19 @@
         if( isalnum( characterToAdd ) ) {
 
             NSString *stringToAdd = [NSString stringWithCharacters:&characterToAdd length:1];
-            [alphaNumOnlyStr appendString:stringToAdd];
+            [poleDancer appendString:stringToAdd];
 
         } else if( i < originalCursorPosition ) {
             (*cursorPosition)--;
         }
     }
 
-    return alphaNumOnlyStr;
+    return poleDancer;
 }
 
-+(NSString *)insertHyphensForProximityUUID:(NSString *)string withCursorPosition:(NSUInteger *)cursorPosition {
++(NSString *)hyphenateString:(NSString *)string atCursorPosition:(NSUInteger *)cursorPosition {
 
-    NSMutableString *stringWithHyphens = [NSMutableString new];
+    NSMutableString *hyphenatedString = [NSMutableString new];
     NSUInteger cursorPositionInString = *cursorPosition;
 
     NSUInteger strLen = [string length];
@@ -102,7 +101,7 @@
 
     for( i = 0; i < strLen; i++) {
         if( i >= 8 && i <= 20 && i%4 == 0 ) {
-            [stringWithHyphens appendString:@"-"];
+            [hyphenatedString appendString:@"-"];
 
             if( i < cursorPositionInString ) {
                 (*cursorPosition)++;
@@ -110,9 +109,9 @@
         }
 
         unichar characterToAdd = [string characterAtIndex:i];
-        [stringWithHyphens appendString:[NSString stringWithCharacters:&characterToAdd length:1]];
+        [hyphenatedString appendString:[NSString stringWithCharacters:&characterToAdd length:1]];
     }
 
-    return stringWithHyphens;
+    return hyphenatedString;
 }
 @end
