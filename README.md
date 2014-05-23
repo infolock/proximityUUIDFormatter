@@ -23,12 +23,12 @@ This solution is inspired by [this excellent stackoverflow solution by Mark Amer
 
 Here is a list of Available Public Methods available by the `proximityUUIDFormatter`...
 
-#### Extras/Helpers Methods
+##### Extras/Helpers Methods
 * `+(NSString *)generateUUID` - Quick way to generate a random UUID
 * `+(NSUUID *)proximityUUIDFromUUID:(id)UUID` -  Convenience method to allow us to work with either a UUID String or Object
 * `+(BOOL)isValidProximityUUID:(NSString *)proximityUUID` - Is this a valid ProximityUUID?
 
-#### Primary Usage Methods
+##### Primary Usage Methods
 * `+(void)storeValuesInTextField:(UITextField *)textField` - Ensures we keep a properly structured, 32-character value.
 * `+(void)formatTextField:(UITextField *)textField` - Handles the actual heavy lifting of formatting/keeping track of cursor position, and all that other jazz...
 
