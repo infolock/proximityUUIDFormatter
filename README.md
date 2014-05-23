@@ -65,4 +65,3 @@ SOFTWARE.
 * [NSHipter's Matt Thompson's NSUUID/CFUUIDRef/UIDevice -uniqueIdentifier/-identifierForVendor Aricle](http://nshipster.com/uuid-udid-unique-identifier/)
   * sheesh - I bet he laughed at this title ;)
 * [Youtube Video of this guy in action](https://www.youtube.com/watch?v=aFu2nWhVZwc)
-* 
