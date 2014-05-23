@@ -62,6 +62,7 @@ SOFTWARE.
 ### References/Resources
 
 * [Mark Amery's Stackoverflow Solution for Credit Card Space Padding/Positioning](http://stackoverflow.com/questions/12083605/formatting-a-uitextfield-for-credit-card-input-like-xxxx-xxxx-xxxx-xxxx/19161529#19161529)
-* [NSHipter's Matt Thompson's NSUUID/CFUUIDRef/UIDevice -uniqueIdentifier/-identifierForVendor Aricle](http://nshipster.com/uuid-udid-unique-identifier/) (sheesh - I bet he laughed at this title ;) )
+* [NSHipter's Matt Thompson's NSUUID/CFUUIDRef/UIDevice -uniqueIdentifier/-identifierForVendor Aricle](http://nshipster.com/uuid-udid-unique-identifier/)
+  * sheesh - I bet he laughed at this title ;)
 * [Youtube Video of this guy in action](https://www.youtube.com/watch?v=aFu2nWhVZwc)
 * 
