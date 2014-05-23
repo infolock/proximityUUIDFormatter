@@ -1,7 +1,10 @@
 proximityUUIDFormatter
 ======================
 
-Simple, light-weight formatter for dealing with Proximity UUID in a text field...
+Simple, light-weight formatter for dealing with Proximity UUID in a text field..
+
+The key feature is that it will automatically insert hyphens for you at the appropriate spot while typing in your ProximityUUID ( which can be a pain in the ass otherwise )
+
 
 Video:
 [![Video 1](http://img.youtube.com/vi/aFu2nWhVZwc/0.jpg)](https://www.youtube.com/watch?v=aFu2nWhVZwc)
