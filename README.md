@@ -20,3 +20,15 @@ One small gotcha: The `UITextField` attribute `Editing Changed` has been wired u
 This solution is inspired by [this excellent stackoverflow solution](http://stackoverflow.com/questions/12083605/formatting-a-uitextfield-for-credit-card-input-like-xxxx-xxxx-xxxx-xxxx/19161529#19161529).
 
 
+### Available Public Methods
+
+Here is a list of Available Public Methods available by the `proximityUUIDFormatter`...
+
+*Helpers*
+* `+(NSString *)generateUUID` - Quick way to generate a random UUID
+* `+(NSUUID *)proximityUUIDFromUUID:(id)UUID` -  Convenience method to allow us to work with either a UUID String or Object
+* `+(BOOL)isValidProximityUUID:(NSString *)proximityUUID` - Is this a valid ProximityUUID?
+
+*Usage*
+* `+(void)storeValuesInTextField:(UITextField *)textField` - Ensures we keep a properly structured, 32-character value.
+* `+(void)formatTextField:(UITextField *)textField` - Handles the actual heavy lifting of formatting/keeping track of cursor position, and all that other jazz...
