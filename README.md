@@ -41,7 +41,7 @@ Here is a list of Available Public Methods available by the `proximityUUIDFormat
 ### Todo - One day?
 
 * Force allow only A-F alpha characters
-* Perhaps even create a Keyboard Layout that is specifically designed to make entering these values easier?  Hmm? Any takers?  meh...
+* Perhaps even create a Keyboard Layout that is specifically designed to make entering these values easier by only showing A-F and 0-9 keys?  Hmm? Any takers?  meh...
 
 ### References/Resources
 
