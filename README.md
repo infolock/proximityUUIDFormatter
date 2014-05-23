@@ -1,9 +1,14 @@
 proximityUUIDFormatter
 ======================
 
-Simple, light-weight formatter for dealing with Proximity UUID in a text field..
+Simple, light-weight convenience TextField formatter for dealing with Proximity UUID in a text field, to try and make it easier when having to type in that pain in the ass 32 char value....
 
-The key feature is that it will automatically insert hyphens for you at the appropriate spot while typing in your ProximityUUID ( which can be a pain in the ass otherwise )
+### Key Features 
+
+* Automatically inserts hyphens at the appropriate spot while typing in a ProximityUUID 
+* Allows user to Cut/Copy/Paste at any position without it affecting the automatic insertion of said hyphens
+* Restrics the ProximityUUID to be at the max 32 characters
+* Dead simple to use and unobtrusive
 
 
 Video:
@@ -32,6 +37,11 @@ Here is a list of Available Public Methods available by the `proximityUUIDFormat
 * `+(void)storeValuesInTextField:(UITextField *)textField` - Ensures we keep a properly structured, 32-character value.
 * `+(void)formatTextField:(UITextField *)textField` - Handles the actual heavy lifting of formatting/keeping track of cursor position, and all that other jazz...
 
+
+### Todo - One day?
+
+* Force allow only A-F alpha characters
+* Perhaps even create a Keyboard Layout that is specifically designed to make entering these values easier?  Hmm? Any takers?  meh...
 
 ### References/Resources
 
