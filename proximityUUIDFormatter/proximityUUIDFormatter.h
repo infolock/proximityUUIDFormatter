@@ -10,7 +10,12 @@
 
 @interface proximityUUIDTextFieldFormatter : NSObject
 
+// Some (extra) helpers...
++(NSString *)generateUUID;
++(NSUUID *)proximityUUIDFromUUID:(id)UUID;
 +(BOOL)isValidProximityUUID:(NSString *)proximityUUID;
+
+// Usage methods
 +(void)storeValuesInTextField:(UITextField *)textField;
 +(void)formatTextField:(UITextField *)textField;
 
