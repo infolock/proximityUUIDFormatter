@@ -7,6 +7,7 @@ The key feature is that it will automatically insert hyphens for you at the appr
 
 
 Video:
+
 [![Video 1](http://img.youtube.com/vi/aFu2nWhVZwc/0.jpg)](https://www.youtube.com/watch?v=aFu2nWhVZwc)
 
 
