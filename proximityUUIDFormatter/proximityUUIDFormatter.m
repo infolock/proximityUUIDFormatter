@@ -42,9 +42,32 @@
     return _sharedInstance;
 }
 
+#pragma mark -
+#pragma mark Helpers
+#pragma mark -
+
++(NSString *)generateUUID {
+    return [[NSUUID UUID] UUIDString];
+}
+
+
++(NSUUID *)proximityUUIDFromUUID:(id)UUID {
+
+    if( [UUID isKindOfClass:[NSString class]] ) {
+        return [[NSUUID alloc] initWithUUIDString:UUID];
+    }
+    
+    return UUID;
+}
+
 +(BOOL)isValidProximityUUID:(NSString *)proximityUUID {
     return (bool)[[NSUUID alloc] initWithUUIDString:proximityUUID];
 }
+
+
+#pragma mark -
+#pragma mark Usage Methods
+#pragma mark -
 
 +(void)storeValuesInTextField:(UITextField *)textField {
     [[proximityUUIDFormatter sharedInstance] stashValuesInTextField:textField];
@@ -114,4 +137,5 @@
 
     return hyphenatedString;
 }
+
 @end
