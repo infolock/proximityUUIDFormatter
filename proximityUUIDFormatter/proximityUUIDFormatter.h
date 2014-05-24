@@ -8,7 +8,7 @@
 
 
 
-@interface proximityUUIDTextFieldFormatter : NSObject
+@interface proximityUUIDFormatter : NSObject
 
 /**
  * Some (extra) helpers...
