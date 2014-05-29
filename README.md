@@ -2,7 +2,7 @@ proximityUUIDFormatter
 ======================
 
 > This may no longer be useful since Apple is apparently going to prevent direct UUID input in apps..
-> See [this article](http://beekn.net/2014/05/apple-closed-system-apple-slowly-locking-ibeacon/) for more information.
+> See [this article](http://beekn.net/2014/05/apple-closed-system-apple-slowly-locking-ibeacon/) and [this follow-up article](http://beekn.net/2014/05/guest-post-whos-watching-beacons-role-wikibeacon-ibeacon-databases/) for more information.
 
 
 Simple, light-weight convenience TextField formatter for dealing with Proximity UUID in a text field, to try and make it easier when having to type in that pain in the ass 32 char value....
