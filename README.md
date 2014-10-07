@@ -1,6 +1,10 @@
 proximityUUIDFormatter
 ======================
 
+![Unmaintained](https://img.shields.io/badge/%E2%9A%A0-unmaintained-red.svg?style=flat)
+> Yet another Objective-C repo that will remain unmaintained indefinitely or until I can write a Swift version to replace it.
+
+
 > This may no longer be useful since Apple is apparently going to prevent direct UUID input in apps..
 > See [this article](http://beekn.net/2014/05/apple-closed-system-apple-slowly-locking-ibeacon/) and [this follow-up article](http://beekn.net/2014/05/guest-post-whos-watching-beacons-role-wikibeacon-ibeacon-databases/) for more information.
 
